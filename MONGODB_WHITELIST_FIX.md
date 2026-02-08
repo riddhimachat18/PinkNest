@@ -164,17 +164,14 @@ Should return:
 
 ---
 
-## 📝 Current MongoDB Connection String
+## 📝 MongoDB Connection String Format
 
-From your `.env`:
+Your connection string should include the database name:
 ```
-mongodb+srv://chaturvediriddhima18_db_user:AU0bTB5dvmhTr1Xh@userbase.jcuszgb.mongodb.net/?appName=UserBase
+mongodb+srv://username:password@cluster.mongodb.net/database_name?appName=AppName
 ```
 
-**Note**: This is missing the database name. Should be:
-```
-mongodb+srv://chaturvediriddhima18_db_user:AU0bTB5dvmhTr1Xh@userbase.jcuszgb.mongodb.net/pinknest?appName=UserBase
-```
+Make sure to replace `username`, `password`, `cluster`, and `database_name` with your actual values.
 
 ---
 
@@ -185,9 +182,9 @@ mongodb+srv://chaturvediriddhima18_db_user:AU0bTB5dvmhTr1Xh@userbase.jcuszgb.mon
 1. Go to Render → Your Service → Environment
 2. Find `MONGODB_URI`
 3. Click "Edit"
-4. Update to:
+4. Update to include your database name:
    ```
-   mongodb+srv://chaturvediriddhima18_db_user:AU0bTB5dvmhTr1Xh@userbase.jcuszgb.mongodb.net/pinknest?appName=UserBase
+   mongodb+srv://username:password@cluster.mongodb.net/your_database_name?appName=AppName
    ```
 5. Save
 6. Redeploy
@@ -196,7 +193,7 @@ mongodb+srv://chaturvediriddhima18_db_user:AU0bTB5dvmhTr1Xh@userbase.jcuszgb.mon
 
 Edit `backend/.env`:
 ```env
-MONGODB_URI=mongodb+srv://chaturvediriddhima18_db_user:AU0bTB5dvmhTr1Xh@userbase.jcuszgb.mongodb.net/pinknest?appName=UserBase
+MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/your_database_name?appName=AppName
 ```
 
 ---

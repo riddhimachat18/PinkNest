@@ -34,8 +34,8 @@ If you haven't deployed your backend yet, you have two options:
 5. Add Environment Variables (click "Advanced" → "Add Environment Variable"):
    ```
    PORT=5000
-   MONGODB_URI=mongodb+srv://chaturvediriddhima18_db_user:AU0bTB5dvmhTr1Xh@userbase.jcuszgb.mongodb.net/?appName=UserBase
-   JWT_SECRET=1260a5b688fcc33616df7a969a706101rcabcnk
+   MONGODB_URI=your_mongodb_connection_string_here
+   JWT_SECRET=your_secure_random_jwt_secret_here
    JWT_EXPIRE=7d
    NODE_ENV=production
    ```
