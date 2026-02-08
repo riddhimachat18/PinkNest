@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 20 100% 97%;
+    --foreground: 16 30% 25%;
+
+    --card: 25 100% 98%;
+    --card-foreground: 16 30% 25%;
+
+    --popover: 25 100% 98%;
+    --popover-foreground: 16 30% 25%;
+
+    --primary: 12 100% 76%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 20 93% 88%;
+    --secondary-foreground: 16 30% 25%;
+
+    --muted: 25 60% 93%;
+    --muted-foreground: 16 18% 45%;
+
+    --accent: 14 55% 75%;
+    --accent-foreground: 16 30% 25%;
+
+    --destructive: 0 65% 67%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 28 40% 90%;
+    --input: 28 40% 90%;
+    --ring: 12 100% 76%;
+
+    --radius: 0.75rem;
+
+    /* Custom warm pink tokens */
+    --coral: 12 100% 76%;
+    --peach: 20 93% 88%;
+    --cream: 25 100% 98%;
+    --dusty-rose: 14 55% 75%;
+    --terracotta: 16 45% 63%;
+    --warm-brown: 16 30% 25%;
+    --light-brown: 16 18% 45%;
+    --light-pink-bg: 20 100% 95%;
+
+    /* Shadows */
+    --shadow-sm: 0 2px 4px hsla(16, 30%, 25%, 0.06);
+    --shadow-md: 0 4px 8px hsla(16, 30%, 25%, 0.08);
+    --shadow-lg: 0 8px 16px hsla(16, 30%, 25%, 0.10);
+
+    /* Sidebar */
+    --sidebar-background: 20 93% 88%;
+    --sidebar-foreground: 16 30% 25%;
+    --sidebar-primary: 12 100% 76%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 20 100% 92%;
+    --sidebar-accent-foreground: 16 30% 25%;
+    --sidebar-border: 28 40% 86%;
+    --sidebar-ring: 12 100% 76%;
+  }
+
+  .dark {
+    --background: 16 30% 10%;
+    --foreground: 25 100% 95%;
+    --card: 16 25% 14%;
+    --card-foreground: 25 100% 95%;
+    --popover: 16 25% 14%;
+    --popover-foreground: 25 100% 95%;
+    --primary: 12 100% 76%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 16 20% 20%;
+    --secondary-foreground: 25 100% 95%;
+    --muted: 16 15% 18%;
+    --muted-foreground: 20 20% 60%;
+    --accent: 14 55% 75%;
+    --accent-foreground: 25 100% 95%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 16 15% 22%;
+    --input: 16 15% 22%;
+    --ring: 12 100% 76%;
+    --sidebar-background: 16 25% 12%;
+    --sidebar-foreground: 25 100% 95%;
+    --sidebar-primary: 12 100% 76%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 16 15% 18%;
+    --sidebar-accent-foreground: 25 100% 95%;
+    --sidebar-border: 16 15% 22%;
+    --sidebar-ring: 12 100% 76%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Quicksand', sans-serif;
+  }
+}
+
+@layer utilities {
+  .gradient-primary {
+    background: linear-gradient(135deg, hsl(var(--coral)) 0%, hsl(var(--dusty-rose)) 100%);
+  }
+
+  .gradient-bg {
+    background: linear-gradient(180deg, hsl(var(--light-pink-bg)) 0%, hsl(var(--peach)) 100%);
+  }
+
+  .gradient-hero {
+    background: linear-gradient(135deg, hsl(20, 100%, 95%) 0%, hsl(20, 93%, 88%) 50%, hsl(12, 100%, 86%) 100%);
+  }
+
+  .shadow-warm-sm {
+    box-shadow: var(--shadow-sm);
+  }
+
+  .shadow-warm-md {
+    box-shadow: var(--shadow-md);
+  }
+
+  .shadow-warm-lg {
+    box-shadow: var(--shadow-lg);
+  }
+}
