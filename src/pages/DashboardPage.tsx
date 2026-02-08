@@ -49,13 +49,21 @@ const DashboardPage = () => {
     day: "numeric",
   });
 
-  // Filter to show only current user's personal tasks in Today's Focus
+  // Show user's personal tasks AND team tasks in Today's Focus
   const todaysTasks = tasks
-    .filter((t: any) => !t.completed && t.type === "personal" && t.createdBy._id === user?.id)
+    .filter((t: any) => {
+      if (t.completed) return false;
+      // Include personal tasks created by user OR team tasks
+      return (t.type === "personal" && t.createdBy._id === user?.id) || t.type === "team";
+    })
     .slice(0, 4);
   
-  // Filter events to show only current user's personal events
-  const upcomingEvents = events.filter((e: any) => !e.completed && e.createdBy._id === user?.id);
+  // Show user's personal events AND team events
+  const upcomingEvents = events.filter((e: any) => {
+    if (e.completed) return false;
+    // Include personal events created by user OR team events
+    return (e.type === "personal" && e.createdBy._id === user?.id) || e.type === "team";
+  });
   
   const teamTasksCount = tasks.filter((t: any) => t.type === "team").length;
 
@@ -110,14 +118,14 @@ const DashboardPage = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.25 }}
       >
-        <h2 className="font-heading text-lg font-bold text-foreground mb-4">Today's Focus (My Tasks)</h2>
+        <h2 className="font-heading text-lg font-bold text-foreground mb-4">Today's Focus</h2>
         <div className="space-y-3">
           {todaysTasks.length > 0 ? (
             todaysTasks.map((task: any) => (
               <TaskCard key={task._id} task={task} onUpdate={fetchData} />
             ))
           ) : (
-            <p className="text-center text-muted-foreground py-8">No personal tasks for today. Great job! 🎉</p>
+            <p className="text-center text-muted-foreground py-8">No tasks for today. Great job! 🎉</p>
           )}
         </div>
       </motion.div>
@@ -128,7 +136,7 @@ const DashboardPage = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.35 }}
       >
-        <h2 className="font-heading text-lg font-bold text-foreground mb-4">My Upcoming Events</h2>
+        <h2 className="font-heading text-lg font-bold text-foreground mb-4">Upcoming Events</h2>
         <div className="space-y-3">
           {upcomingEvents.length > 0 ? (
             upcomingEvents.slice(0, 5).map((event: any) => (
@@ -158,7 +166,7 @@ const DashboardPage = () => {
               </div>
             ))
           ) : (
-            <p className="text-center text-muted-foreground py-8">No upcoming personal events</p>
+            <p className="text-center text-muted-foreground py-8">No upcoming events</p>
           )}
         </div>
       </motion.div>
