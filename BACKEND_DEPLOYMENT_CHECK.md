@@ -53,21 +53,7 @@ Should see: `{"success":false,"message":"Not authorized to access this route"}`
 
 6. **Add Environment Variables**:
    Click "Advanced" → "Add Environment Variable" for each:
-   
-   ```
-   PORT = 5000
-   ```
-   ```
-   MONGODB_URI = mongodb+srv://chaturvediriddhima18_db_user:AU0bTB5dvmhTr1Xh@userbase.jcuszgb.mongodb.net/?appName=UserBase
-   ```
-   ```
-   JWT_SECRET = 1260a5b688fcc33616df7a969a706101rcabcnk
-   ```
-   ```
-   JWT_EXPIRE = 7d
-   ```
-   ```
-   NODE_ENV = production
+  
    ```
 
 7. **Create Web Service**: Click "Create Web Service"
