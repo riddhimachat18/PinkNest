@@ -49,8 +49,14 @@ const DashboardPage = () => {
     day: "numeric",
   });
 
-  const todaysTasks = tasks.filter((t: any) => !t.completed).slice(0, 4);
-  const upcomingEvents = events.filter((e: any) => !e.completed);
+  // Filter to show only current user's personal tasks in Today's Focus
+  const todaysTasks = tasks
+    .filter((t: any) => !t.completed && t.type === "personal" && t.createdBy._id === user?.id)
+    .slice(0, 4);
+  
+  // Filter events to show only current user's personal events
+  const upcomingEvents = events.filter((e: any) => !e.completed && e.createdBy._id === user?.id);
+  
   const teamTasksCount = tasks.filter((t: any) => t.type === "team").length;
 
   const stats = [
@@ -104,14 +110,14 @@ const DashboardPage = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.25 }}
       >
-        <h2 className="font-heading text-lg font-bold text-foreground mb-4">Today's Focus</h2>
+        <h2 className="font-heading text-lg font-bold text-foreground mb-4">Today's Focus (My Tasks)</h2>
         <div className="space-y-3">
           {todaysTasks.length > 0 ? (
             todaysTasks.map((task: any) => (
               <TaskCard key={task._id} task={task} onUpdate={fetchData} />
             ))
           ) : (
-            <p className="text-center text-muted-foreground py-8">No tasks for today. Great job! 🎉</p>
+            <p className="text-center text-muted-foreground py-8">No personal tasks for today. Great job! 🎉</p>
           )}
         </div>
       </motion.div>
@@ -122,7 +128,7 @@ const DashboardPage = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.35 }}
       >
-        <h2 className="font-heading text-lg font-bold text-foreground mb-4">Upcoming Events</h2>
+        <h2 className="font-heading text-lg font-bold text-foreground mb-4">My Upcoming Events</h2>
         <div className="space-y-3">
           {upcomingEvents.length > 0 ? (
             upcomingEvents.slice(0, 5).map((event: any) => (
@@ -152,7 +158,7 @@ const DashboardPage = () => {
               </div>
             ))
           ) : (
-            <p className="text-center text-muted-foreground py-8">No upcoming events</p>
+            <p className="text-center text-muted-foreground py-8">No upcoming personal events</p>
           )}
         </div>
       </motion.div>
